@@ -17,7 +17,7 @@ import { Team } from "./components/views/Team";
 
 import { cn } from "./lib/utils";
 import Login from "./components/Login";
-import { Employees } from "./components/views/Employees";
+import { Employees } from "./components/views/Employees"; 
 import AddEmployeePage from "./components/Admin/AddEmployee";
 
 import AddTeamPage from "./components/Admin/AddTeam"; 
@@ -62,23 +62,23 @@ function AppLayout() {
             >
                 <div className="p-6 md:p-8 lg:p-10">
                     <Routes>
-                        {/* Public Routes */}
+                    
                         <Route path="/" element={<LandingPageWrapper />} />
                         <Route path="/login" element={<LoginWrapper />} />
 
-                        {/* App Routes */}
+                      
                         <Route path="/dashboard" element={<Dashboard />} />
                         <Route path="/timesheet" element={<Timesheet />} />
                         <Route path="/projects" element={<Projects />} />
                         <Route path="/team" element={<Team />} />
 
-                        {/* Admin/Management Routes */}
+                    
                         <Route path="/employees" element={<Employees />} />
                         <Route path="/add-employee" element={<AddEmployeePage />} />
                         <Route path="/add-team" element={<AddTeamPage />} />
                         <Route path="/add-project" element={<AddProjectPage />} />
 
-                        {/* Default fallback */}
+                  
                         <Route path="*" element={<Navigate to="/" />} />
                     </Routes>
                 </div>

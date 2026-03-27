@@ -114,7 +114,7 @@ export default function AddTeamPage() {
                                 type="number" 
                                 value={form.max_members} 
                                 onChange={handleChange} 
-                                placeholder="e.g. 12" 
+                                placeholder="min: 2, max: 12" 
                                 required 
                                 className="h-12 rounded-2xl bg-background text-foreground" 
                             />

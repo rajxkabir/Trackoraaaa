@@ -83,20 +83,9 @@ export function LandingPage() {
                                 Login ➡️
                             </Button>
 
-                            {/* <Button
-                                size="lg"
-                                variant="outline"
-                                className="transition-all duration-300 hover:scale-105"
-                            >
-                                Watch Demo
-                            </Button> */}
+                      
                         </div>
 
-                        {/* <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground">
-                            <span>✨ 10,000+ users</span>
-                            <span>🚀 Fast & reliable</span>
-                            <span>🔒 Secure platform</span>
-                        </div> */}
                     </div>
                 </section>
 
@@ -143,41 +132,6 @@ export function LandingPage() {
                         </div>
                     </div>
                 </section>
-                {/* ================= BENEFITS ================= */}
-                {/* <section id="benefits" className="relative py-24 px-4 sm:px-6 overflow-hidden">
-                    <div className="absolute inset-0 -z-10 flex justify-center">
-                        <div className="w-[500px] h-[500px] bg-gradient-to-r from-blue-500/20 to-cyan-400/20 blur-[120px] rounded-full" />
-                    </div>
-
-                    <div className="max-w-6xl mx-auto text-center mb-20">
-                        <h2 className="text-4xl sm:text-5xl font-bold tracking-tight mb-6 leading-tight">
-                            Why teams choose
-                            <br />
-                            <span className="bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">Trackora</span>
-                        </h2>
-                        <p className="text-muted-foreground max-w-2xl mx-auto text-base sm:text-lg">
-                            Designed to boost productivity, reduce manual work, and help teams stay focused on what matters most.
-                        </p>
-                    </div>
-
-                    <div className="max-w-6xl mx-auto grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {benefits.map((b) => (
-                            <div
-                                key={b.title}
-                                className="group relative p-6 rounded-2xl border border-border bg-card/70 backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/10 overflow-hidden"
-                            >
-                                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-br from-blue-500/10 to-cyan-400/10 blur-xl" />
-                                <div className="relative z-10 w-12 h-12 flex items-center justify-center rounded-xl bg-accent/10 mb-5 group-hover:bg-accent/20 transition">
-                                    <b.icon className="w-6 h-6 text-accent group-hover:scale-110 transition" />
-                                </div>
-                                <h3 className="relative z-10 text-lg font-semibold mb-2 group-hover:text-accent transition">{b.title}</h3>
-                                <p className="relative z-10 text-sm text-muted-foreground leading-relaxed">{b.description}</p>
-                                <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-gradient-to-r from-blue-500 to-cyan-400 group-hover:w-full transition-all duration-500" />
-                            </div>
-                        ))}
-                    </div>
-                </section> */}
-
                 
                 {/* ================= ABOUT ================= */}
                 <section id="about" className="py-24 px-6 bg-muted/30 dark:bg-background">
@@ -209,25 +163,7 @@ export function LandingPage() {
                     </div>
                 </section>
 
-                {/* ================= CTA ================= */}
-                {/* <section className="relative py-24 px-6 text-center overflow-hidden">
-                    <div className="absolute inset-0 -z-10 flex justify-center">
-                        <div className="w-[500px] h-[500px] bg-gradient-to-r from-blue-500/20 to-cyan-400/20 blur-[120px] rounded-full" />
-                    </div>
-
-                    <div className="max-w-3xl mx-auto">
-                        <h2 className="text-3xl sm:text-4xl font-bold mb-6">Ready to take control of your time?</h2>
-                        <p className="text-muted-foreground mb-10">Join thousands of users managing their work smarter and faster with Trackora.</p>
-                        <Button
-                            size="lg"
-                            onClick={handleStart}
-                            className="gap-2 px-10 py-6 text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/20"
-                        >
-                            Get Started Free 🚀
-                            <ArrowRight className="w-5 h-5" />
-                        </Button>
-                    </div>
-                </section> */}
+               
 
                 <Footer />
             </div>
