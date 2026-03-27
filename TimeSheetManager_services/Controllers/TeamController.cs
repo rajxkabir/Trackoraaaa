@@ -1,74 +1,53 @@
-﻿ using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Text.Json;
-using System.Text.Json.Serialization; 
-using System.Threading.Tasks;
-using TimeSheetManager_services.Data;
-using TimeSheetManager_services.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using TimeSheetManager_services.Services.Interfaces;
+using TimeSheetManager_services.DTOs.Team;
 
 namespace TimeSheetManager_services.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/team")]
     public class TeamController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
+        private readonly ITeamService _service;
 
-        private readonly JsonSerializerOptions _jsonOptions = new JsonSerializerOptions
+        public TeamController(ITeamService service)
         {
-            PropertyNamingPolicy = null,
-            ReferenceHandler = ReferenceHandler.IgnoreCycles,
-            WriteIndented = true
-        };
-
-        public TeamController(ApplicationDbContext context)
-        {
-            _context = context;
+            _service = service;
         }
 
-        [HttpGet("all")]
-        public async Task<IActionResult> GetAllTeams()
+        // 🔥 Admin create team
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        public IActionResult Create(CreateTeamDto dto)
         {
-            try
-            {
-                var teams = await _context.Teams
-                    .Include(t => t.TeamLead)
-                    .ToListAsync();
-
-                if (teams == null || !teams.Any())
-                {
-                    return NotFound(new { message = "No teams found." });
-                }
-                    
-                return new JsonResult(teams, _jsonOptions);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, new { message = "Error fetching teams", details = ex.Message });
-            }
+            return Ok(_service.CreateTeam(dto));
         }
 
-        [HttpPost("add")]
-        public async Task<IActionResult> AddTeam([FromBody] Team model)
+        // 🔥 Admin view all teams
+        [Authorize(Roles = "Admin")]
+        [HttpGet]
+        public IActionResult GetAll()
         {
-            if (model == null) return BadRequest(new { message = "Invalid team data" });
+            return Ok(_service.GetAllTeams());
+        }
 
-            try
-            {
-                model.id = 0;
-                model.created_at = DateTime.Now;
-                model.updated_at = DateTime.Now;
+        // 🔥 Leader add member
+        [Authorize(Roles = "Leader")]
+        [HttpPost("add-member")]
+        public IActionResult AddMember(AddMemberDto dto)
+        {
+            _service.AddMember(dto);
+            return Ok("Member Added");
+        }
 
-                _context.Teams.Add(model);
-                await _context.SaveChangesAsync();
-
-                return Ok(new { message = "Team Created!", teamId = model.id });
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, new { details = ex.Message });
-            }
+        // 🔥 Leader view own team
+        [Authorize(Roles = "Leader")]
+        [HttpGet("my")]
+        public IActionResult MyTeam()
+        {
+            var userId = int.Parse(User.FindFirst("id").Value);
+            return Ok(_service.GetMyTeam(userId));
         }
     }
 }
